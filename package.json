@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dracco1993/ggl-bot/issues"
   },
-  "homepage": "https://github.com/dracco1993/ggl-bot#readme"
+  "homepage": "https://github.com/dracco1993/ggl-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
 }

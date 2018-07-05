@@ -1,14 +1,15 @@
-const http = require('http');
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const config = require("./config.json");
 
-const hostname = '127.0.0.1';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World\n');
+client.on("ready", () => {
+  console.log("I am ready!");
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+client.on("message", (message) => {
+  if (message.content.startsWith("ping")) {
+    message.channel.send("pong!");
+  }
 });
+
+client.login(config.token);
