@@ -18,5 +18,8 @@
   "homepage": "https://github.com/dracco1993/ggl-bot#readme",
   "dependencies": {
     "discord.js": "^11.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }
