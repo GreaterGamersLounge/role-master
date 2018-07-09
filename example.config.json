@@ -1,4 +1,6 @@
 {
     "token": "YOUR TOKEN GOES HERE",
-    "prefix": "!"
+    "prefix": "!",
+    "adminChannelName": "admincommands",
+    "gameRoleColor": "FFFFFF"
 }
