@@ -24,10 +24,15 @@ class RoleMaster {
   addRole(role) {
     // Maybe want to return if this worked or not later on?
     this.user.addRole(role).catch(console.error);
+    console.log(`Role "${this.roleName}" given to ${this.user.username}.`);
   }
 
   getRole() {
     return this.user.guild.roles.find("name", this.roleName);
+  }
+
+  createRole() {
+    // TODO
   }
 
   removeRole() {

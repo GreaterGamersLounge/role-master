@@ -1,8 +1,8 @@
 // Global objects
 const Discord = require("discord.js");
 const client = new Discord.Client();
-const config = require("./config.json");
-const RoleMaster = require("./role-master.js");
+const config = require("./config/config.json");
+const RoleMaster = require("./src/role-master");
 
 client.on("ready", () => {
   console.log("Booting complete!");
