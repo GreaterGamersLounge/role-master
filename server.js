@@ -19,8 +19,11 @@ client.on("message", (message) => {
 
   if (message.channel.name == config.adminChannelName) {
     console.log("Incoming admin message...");
-    const response = new AdminChatHandler(message, config).response;
-    message.channel.send(response);
+    new AdminChatHandler(message).
+      getResponse().
+      then((response) => {
+        message.channel.send(response)
+      });
   }
 });
 

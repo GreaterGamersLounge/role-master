@@ -1,12 +1,11 @@
-class AdminChatHandler {
-  constructor(message, config) {
-    this.message = message;
-    this.config = config;
-    this.response = "Something went wrong...";
+const config = require("../config/config.json");
 
-    this.processMessage();
+class AdminChatHandler {
+  constructor(message) {
+    this.message = message;
+    this.response = "";
   }
-  processMessage() {
+  getResponse() {
     // This could use better handling for more commands
     // but it's okay for now...
 
@@ -14,21 +13,31 @@ class AdminChatHandler {
     if (this.message.content.startsWith("!cgr ")) {
       const roleName = this.message.content.split("!cgr ")[1];
 
-      // TODO: Check to see if that rold exists already
+      // TODO: Check to see if that role exists already
 
       if (roleName.length == 0) {
-        this.response = "Sorry, that role can not be made.";
-        return
+        return new Promise((resolve, _) => {
+          resolve("Sorry, that role can not be made.");
+        });
       }
 
       const newRole = this.message.guild.createRole({
         name: roleName,
-        color: this.config.gameRoleColor,
+        color: config.gameRoleColor,
         permissions: [],
         mentionable: true
-      })
+      });
 
-      this.response = `Created new role with name ${roleName} and color ${this.config.gameRoleColor}`
+      return new Promise((resolve, _) => {
+        // After the new role saves, return the message
+        newRole.then((role) => {
+          resolve(`Created new role with name "${role.name}" and color ${role.hexColor}`);
+        });
+      });
+    } else {
+      return new Promise((resolve, _) => {
+        resolve("Command not found. Try !help");
+      });
     }
   }
 }
