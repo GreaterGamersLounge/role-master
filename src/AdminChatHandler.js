@@ -14,14 +14,21 @@ class AdminChatHandler {
     if (this.message.content.startsWith("!cgr ")) {
       const roleName = this.message.content.split("!cgr ")[1];
 
-      // TODO: Check to see if that role exists already
-
       if (roleName.length == 0) {
         return new Promise((resolve, _) => {
           resolve("Sorry, that role can not be made.");
         });
       }
 
+      // Check to see if that role exists already
+      const role = new RoleMaster().getRole(this.message.guild, roleName);
+      if (role !== null) {
+        return new Promise((resolve, _) => {
+          resolve("Sorry, that role already exists.");
+        });
+      }
+
+      // Actually make the new role
       return new Promise((resolve, _) => {
         new RoleMaster().
           createRole(this.message.guild, roleName).

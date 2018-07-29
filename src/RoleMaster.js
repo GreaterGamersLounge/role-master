@@ -7,7 +7,7 @@ class RoleMaster {
 
   attemptRoleAdd(user, roleName) {
     // Grab the potential role we want to add
-    const role = this.getRole(user, roleName);
+    const role = this.getRole(user.guild, roleName);
 
     // If the correct role exists already
     if (role !== null) {
@@ -26,8 +26,8 @@ class RoleMaster {
     console.log(`Role "${role.name}" given to ${user.displayName}.`);
   }
 
-  getRole(user, roleName) {
-    return user.guild.roles.find("name", roleName);
+  getRole(guild, roleName) {
+    return guild.roles.find("name", roleName);
   }
 
   createRole(guild, roleName) {
