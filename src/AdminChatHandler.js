@@ -22,20 +22,13 @@ class AdminChatHandler {
         });
       }
 
-      // We should probably have RoleMaster do this instead of here
-      const newRole = this.message.guild.createRole({
-        name: roleName,
-        color: config.gameRoleColor,
-        permissions: [],
-        mentionable: true
-      });
-
       return new Promise((resolve, _) => {
-        // After the new role saves, return the message
-        newRole.then((role) => {
-          resolve(`Created new role with name "${role.name}" and color ${role.hexColor}`);
-        });
-      });
+        new RoleMaster().
+          createRole(this.message.guild, roleName).
+          then((message) => {
+            resolve(message);
+          });
+      })
     } else {
       return new Promise((resolve, _) => {
         resolve("Command not found. Try !help");

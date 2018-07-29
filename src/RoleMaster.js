@@ -1,3 +1,5 @@
+const config = require("../config/config.json");
+
 class RoleMaster {
   constructor() {
     console.log("I AM THE ROLE MASTER!");
@@ -28,8 +30,19 @@ class RoleMaster {
     return user.guild.roles.find("name", roleName);
   }
 
-  createRole() {
-    // TODO
+  createRole(guild, roleName) {
+    return new Promise((resolve, _) => {
+      // Create/save the new role
+      guild.createRole({
+        name: roleName,
+        color: config.gameRoleColor,
+        permissions: [],
+        mentionable: true
+      }).then((role) => {
+        // After the new role saves, return the message
+        resolve(`Created new role with name "${role.name}" and color ${role.hexColor}`);
+      });
+    });
   }
 
   removeRole() {
