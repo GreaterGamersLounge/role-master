@@ -1,34 +1,31 @@
 class RoleMaster {
-  constructor(user, roleName) {
-    this.user = user;
-    this.roleName = roleName;
-
+  constructor() {
     console.log("I AM THE ROLE MASTER!");
   }
 
-  attemptRoleAdd() {
+  attemptRoleAdd(user, roleName) {
     // Grab the potential role we want to add
-    const role = this.getRole();
+    const role = this.getRole(user, roleName);
 
     // If the correct role exists already
     if (role !== null) {
       console.log("GOT IT!");
-      this.addRole(role);
+      this.addRole(user, role);
     } else {
       // Ask the admins to add it or something.  Soon™
-      console.log(`Sorry, I could not find role: ${this.roleName}`);
+      console.log(`Sorry, I could not find role: ${roleName}`);
       console.log("<sadface>");
     }
   }
 
-  addRole(role) {
+  addRole(user, role) {
     // Maybe want to return if this worked or not later on?
-    this.user.addRole(role).catch(console.error);
-    console.log(`Role "${this.roleName}" given to ${this.user.username}.`);
+    user.addRole(role).catch(console.error);
+    console.log(`Role "${role.name}" given to ${user.displayName}.`);
   }
 
-  getRole() {
-    return this.user.guild.roles.find("name", this.roleName);
+  getRole(user, roleName) {
+    return user.guild.roles.find("name", roleName);
   }
 
   createRole() {

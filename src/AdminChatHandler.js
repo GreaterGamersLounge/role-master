@@ -1,4 +1,5 @@
 const config = require("../config/config.json");
+const RoleMaster = require("../src/RoleMaster");
 
 class AdminChatHandler {
   constructor(message) {
@@ -21,6 +22,7 @@ class AdminChatHandler {
         });
       }
 
+      // We should probably have RoleMaster do this instead of here
       const newRole = this.message.guild.createRole({
         name: roleName,
         color: config.gameRoleColor,
