@@ -11,7 +11,9 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
+  // Don't respond to other bots or private messages
   if (message.author.bot) return
+  if (message.guild == null) return
 
   if (message.content.startsWith("ping")) {
     message.channel.send("pong!");
