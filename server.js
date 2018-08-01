@@ -15,10 +15,6 @@ client.on("message", (message) => {
   if (message.author.bot) return
   if (message.guild == null) return
 
-  if (message.content.startsWith("ping")) {
-    message.channel.send("pong!");
-  }
-
   if (message.channel.name == config.adminChannelName) {
     console.log("Incoming admin message...");
     new AdminChatHandler(message).
