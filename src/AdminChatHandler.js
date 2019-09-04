@@ -1,5 +1,5 @@
-const config = require("../config/config.json");
-const RoleMaster = require("../src/RoleMaster");
+import RoleMaster from "../src/RoleMaster";
+import RoleSeparators from "./RoleSeparators";
 
 class AdminChatHandler {
   constructor(message) {
@@ -36,6 +36,11 @@ class AdminChatHandler {
             resolve(message);
           });
       });
+    } else if (this.message.content.startsWith("!makeRoleSeparators")) {
+      new RoleSeparators(this.message.guild).makeRoles();
+      return new Promise((resolve, _) => {
+        resolve("Creating role separators...");
+      });
     } else {
       return new Promise((resolve, _) => {
         resolve("Command not found. Try !help");
@@ -44,4 +49,4 @@ class AdminChatHandler {
   }
 }
 
-module.exports = AdminChatHandler;
+export default AdminChatHandler;

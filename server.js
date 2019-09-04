@@ -1,9 +1,10 @@
 // Global objects
-import { Client } from "discord.js";
-const client = new Client();
+import Discord from "discord.js";
 import { adminChannelName, token } from "./config/config.json";
 import RoleMaster from "./src/RoleMaster";
 import AdminChatHandler from "./src/AdminChatHandler";
+
+const client = new Discord.Client();
 
 client.on("ready", () => {
   console.log("Booting complete!");
