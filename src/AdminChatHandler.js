@@ -30,12 +30,12 @@ class AdminChatHandler {
 
       // Actually make the new role
       return new Promise((resolve, _) => {
-        new RoleMaster().
-          createRole(this.message.guild, roleName).
-          then((message) => {
+        new RoleMaster()
+          .createRole(this.message.guild, roleName)
+          .then(message => {
             resolve(message);
           });
-      })
+      });
     } else {
       return new Promise((resolve, _) => {
         resolve("Command not found. Try !help");

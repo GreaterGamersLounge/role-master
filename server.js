@@ -1,32 +1,30 @@
 // Global objects
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const config = require("./config/config.json");
-const RoleMaster = require("./src/RoleMaster");
-const AdminChatHandler = require("./src/AdminChatHandler");
+import { Client } from "discord.js";
+const client = new Client();
+import { adminChannelName, token } from "./config/config.json";
+import RoleMaster from "./src/RoleMaster";
+import AdminChatHandler from "./src/AdminChatHandler";
 
 client.on("ready", () => {
   console.log("Booting complete!");
   console.log("Bot online!");
 });
 
-client.on("message", (message) => {
+client.on("message", message => {
   // Don't respond to other bots or private messages
-  if (message.author.bot) return
-  if (message.guild == null) return
+  if (message.author.bot) return;
+  if (message.guild == null) return;
 
-  if (message.channel.name == config.adminChannelName) {
+  if (message.channel.name == adminChannelName) {
     console.log("Incoming admin message...");
-    new AdminChatHandler(message).
-      getResponse().
-      then((response) => {
-        message.channel.send(response)
-      });
+    new AdminChatHandler(message).getResponse().then(response => {
+      message.channel.send(response);
+    });
   }
 });
 
 client.on("presenceUpdate", (_, newMember) => {
-  if (newMember.isBot === true) return
+  if (newMember.isBot === true) return;
 
   const presence = newMember.presence;
   if (presence.status == "online" && presence.game != null) {
@@ -36,4 +34,4 @@ client.on("presenceUpdate", (_, newMember) => {
 });
 
 console.log("Booting up...");
-client.login(config.token);
+client.login(token);

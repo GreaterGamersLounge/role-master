@@ -15,12 +15,12 @@ class RoleMaster {
       this.addRole(user, role);
     } else {
       // Ask the admins to add the new game role
-      const channel = user.guild.channels.find('name', config.adminChannelName);
+      const channel = user.guild.channels.find("name", config.adminChannelName);
       if (channel !== null) {
         channel.send(`
           ${user.displayName} is now playing ${roleName}, but we don't have a role for it... Add it with "!cgr ${roleName}"
         `);
-      };
+      }
     }
   }
 
@@ -39,15 +39,19 @@ class RoleMaster {
   createRole(guild, roleName) {
     return new Promise((resolve, _) => {
       // Create/save the new role
-      guild.createRole({
-        name: roleName,
-        color: config.gameRoleColor,
-        permissions: [],
-        mentionable: true
-      }).then((role) => {
-        // After the new role saves, return the message
-        resolve(`Created new role with name "${role.name}" and color ${role.hexColor}`);
-      });
+      guild
+        .createRole({
+          name: roleName,
+          color: config.gameRoleColor,
+          permissions: [],
+          mentionable: true
+        })
+        .then(role => {
+          // After the new role saves, return the message
+          resolve(
+            `Created new role with name "${role.name}" and color ${role.hexColor}`
+          );
+        });
     });
   }
 
