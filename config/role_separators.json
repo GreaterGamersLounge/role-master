@@ -1,7 +1,9 @@
 {
   "separator_color": "#00ff00",
   "separator_color1": "#2f3136",
-  "max_role_length": 40,
+  "max_role_length": 38,
+  "yes_reaction": "✅",
+  "no_reaction": "❌",
   "arrow": "🡅",
   "U2063": "⁣",
   "EN_Space": " ",

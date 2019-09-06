@@ -37,7 +37,7 @@ class AdminChatHandler {
           });
       });
     } else if (this.message.content.startsWith("!makeRoleSeparators")) {
-      new RoleSeparators(this.message.guild).makeRoles();
+      new RoleSeparators(this.message.guild, this.message).makeRoles();
       return new Promise((resolve, _) => {
         resolve("Creating role separators...");
       });

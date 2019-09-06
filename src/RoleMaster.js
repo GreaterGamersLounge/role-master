@@ -36,21 +36,21 @@ class RoleMaster {
     return guild.roles.find("name", roleName);
   }
 
-  createRoleNoPromise(guild, roleName, color = gameRoleColor) {
-    return guild.createRole({
-      name: roleName,
-      color: color,
-      permissions: [],
-      mentionable: true
-    });
-  }
-
   createRole(guild, roleName, color = gameRoleColor) {
     return new Promise((resolve, _) => {
       // Create/save the new role
-      createRoleNoPromise(guild, roleName, color);
-
-      resolve(`Created new role with name "${roleName}" and color ${color}`);
+      guild
+        .createRole({
+          name: roleName,
+          color: color,
+          permissions: [],
+          mentionable: true
+        })
+        .then(() => {
+          resolve(
+            `Created new role with name \`"${roleName}"\` and color ${color}`
+          );
+        });
     });
   }
 
