@@ -25,7 +25,7 @@ client.on("message", message => {
 });
 
 client.on("presenceUpdate", (_, newMember) => {
-  if (newMember.isBot === true) return;
+  if (newMember.user.bot === true) return;
 
   const presence = newMember.presence;
   if (presence.status == "online" && presence.game != null) {
