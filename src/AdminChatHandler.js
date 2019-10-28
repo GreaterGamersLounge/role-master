@@ -36,11 +36,11 @@ class AdminChatHandler {
             resolve(message);
           });
       });
-    } else if (this.message.content.startsWith("!makeRoleSeparators")) {
-      new RoleSeparators(this.message.guild, this.message).makeRoles();
-      return new Promise((resolve, _) => {
-        resolve("Creating role separators...");
-      });
+      // } else if (this.message.content.startsWith("!makeRoleSeparators")) {
+      //   new RoleSeparators(this.message.guild, this.message).makeRoles();
+      //   return new Promise((resolve, _) => {
+      //     resolve("Creating role separators...");
+      //   });
     } else {
       return new Promise((resolve, _) => {
         resolve("Command not found. Try !help");
