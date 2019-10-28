@@ -1,0 +1,28 @@
+{
+  "separator_color": "#00ff00",
+  "separator_color1": "#2f3136",
+  "max_role_length": 38,
+  "yes_reaction": "✅",
+  "no_reaction": "❌",
+  "arrow": "🡅",
+  "U2063": "⁣",
+  "EN_Space": " ",
+  "role_separators": [
+    {
+      "name": "Test100",
+      "rank": 100
+    },
+    {
+      "name": "Test200",
+      "rank": 50
+    },
+    {
+      "name": "Test300",
+      "rank": 25
+    },
+    {
+      "name": "Test400",
+      "rank": 0
+    }
+  ]
+}
