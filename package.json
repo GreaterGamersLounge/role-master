@@ -25,6 +25,7 @@
     "esm": "^3.2.25",
     "libsodium-wrappers": "^0.7.3",
     "node-opus": "^0.3.0",
+    "pg": "^7.12.1",
     "zlib-sync": "^0.1.4"
   },
   "devDependencies": {

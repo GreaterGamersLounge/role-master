@@ -1,5 +1,8 @@
 version: "3"
 
+volumes:
+  postgres_data:
+
 services:
   node:
     build:
@@ -8,6 +11,20 @@ services:
     environment:
       # NPM_COMMAND: "start"
       NPM_COMMAND: "start.dev"
+      DATABASE_URL: "postgres://postgres:postgres@postgres/application"
+    depends_on:
+      - postgres
+    links:
+      - postgres
     volumes:
       - ./:/home/node/app
       - /home/node/app/node_modules
+
+  postgres:
+    image: postgres:12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    logging:
+      driver: "none"
+    ports:
+      - "5432:5432"
