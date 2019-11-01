@@ -1,0 +1,14 @@
+on:
+  pull_request:
+    types: [closed]
+name: on pull request merge, delete the branch
+jobs:
+  branchCleanup:
+    name: branch cleanup
+    runs-on: ubuntu-latest
+    steps:
+      - name: branch cleanup
+        uses: jessfraz/branch-cleanup-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NO_BRANCH_DELETED_EXIT_CODE: 0
