@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node start.js",
-    "start.dev": "nodemon -L start.js"
+    "start.dev": "nodemon -L start.js",
+    "migrate": "node-pg-migrate"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "esm": "^3.2.25",
     "libsodium-wrappers": "^0.7.3",
     "node-opus": "^0.3.0",
+    "node-pg-migrate": "^3.23.3",
     "pg": "^7.12.1",
     "zlib-sync": "^0.1.4"
   },
